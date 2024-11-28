@@ -58,7 +58,7 @@ exports.sendOTP = async(req, res) =>{
 
 // SignUP
 
-exports.signUp = async(req, res) =>{
+exports.signup = async(req, res) =>{
     try {
         //fetch data from req body
         const {
@@ -149,7 +149,7 @@ exports.signUp = async(req, res) =>{
 
 //Login
 
-const login = async(req, res) =>{
+exports.login = async(req, res) =>{
     try {
         //get data from req body
         const {email, password} = req.body;

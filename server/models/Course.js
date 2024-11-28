@@ -20,7 +20,7 @@ const courseSchema = new mongoose.Schema({
     },
     courseContent:[
         {
-            type:mongooseSchema.Types.ObjectId,
+            type:mongoose.Schema.Types.ObjectId,
             ref:"Section",
         }
     ],
@@ -50,6 +50,10 @@ const courseSchema = new mongoose.Schema({
     ],
     instructions:{
         type:[String],
+    },
+    status:{
+        type:String,
+        enum: ["Draft", "Published"],
     },
 
     createdAt:{

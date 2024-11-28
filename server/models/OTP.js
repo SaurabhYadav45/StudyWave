@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-// const mailSender = require("../utils/mailSender")
+const mailSender = require("../utils/mailSender")
+const emailTemplate = require("../mail/templates/emailVerificationTemplate")
 
 const OTPSchema = new mongoose.Schema({
     email:{
@@ -13,8 +14,8 @@ const OTPSchema = new mongoose.Schema({
     cretaedAt:{
         type:Date,
         default:Date.now(),
-        expires:5*60,
-    }
+        expires:5*60, // The document will be automatically deleted after 5 minutes of its creation time
+    },
 });
 
 async function sendVerificationEmail(email, otp){
@@ -28,8 +29,14 @@ async function sendVerificationEmail(email, otp){
 }
 
 // This is a Mongoose middleware that runs before saving an OTP document to the database.
-OTPSchema.pre("save", async function(next){
-    await sendVerificationEmail(this.email, this.otp);
-})
+OTPSchema.pre("save", async function (next) {
+	console.log("New document saved to database");
+
+	// Only send an email when a new document is created
+	if (this.isNew) {
+		await sendVerificationEmail(this.email, this.otp);
+	}
+	next();
+});
 
 module.exports = mongoose.model("OTP", OTPSchema);

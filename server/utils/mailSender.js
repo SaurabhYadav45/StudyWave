@@ -5,7 +5,7 @@ const mailSender = async(email, title, body) =>{
         // Create Transporter
         let transporter = nodemailer.createTransport({
             host:process.env.MAIL_HOST,
-            // secure: true,
+            secure: false,
             auth:{
                 user:process.env.MAIL_USER,
                 pass:process.env.MAIL_PASS,
@@ -24,6 +24,7 @@ const mailSender = async(email, title, body) =>{
 
     } catch (error) {
         console.log(error.message);
+        return error.message
     }
 }
 
