@@ -6,16 +6,18 @@ import CTAButton from "../components/core/HomePage/Button";
 import Banner from "../assets/Images/banner.mp4"
 import CodeBlocks from '../components/core/HomePage/Codeblocks.jsx';
 import ExploreMore from '../components/core/HomePage/ExploreMore.jsx';
-import CourseCard from '../components/core/HomePage/CourseCard.jsx';
+// import CourseCard from '../components/core/HomePage/CourseCard.jsx';
 import TimelineSection from "../components/core/HomePage/TimelineSection.jsx";
 import LearningLanguageSection from '../components/core/HomePage/LearningLanguageSection.jsx';
 import InstructorSection from '../components/core/HomePage/InstructorSection.jsx';
-import ReviewSlider from '../components/core/common/ReviewSlider.jsx';
+// import ReviewSlider from '../components/core/common/ReviewSlider.jsx';
 import Footer from '../components/core/common/Footer.jsx';
+// import Navbar from '../components/core/common/Navbar.jsx';
 
 const Home = () => {
   return (
     <div className='overflow-x-hidden'>
+         
         {/* SECTION - 1 */}
         <div className='relative mx-auto flex flex-col w-11/12 items-center text-white justify-between'>
         
@@ -171,7 +173,7 @@ const Home = () => {
         </div>
 
         {/* Section-3 */}
-        <div className='w-11/12 mx-11/12 flex flex-col items-center justify-between bg-richblack-900 text-white gap-8 mt-16'>
+        <div className='w-11/12 mx-auto flex flex-col items-center justify-between bg-richblack-900 text-white gap-8 mt-16'>
           <InstructorSection/>
 
           {/* <h1>Reviews from other learners</h1>

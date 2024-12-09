@@ -4,6 +4,9 @@ const otpGenerator = require("otp-generator");
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
 const mailSender = require("../utils/mailSender");
+const { passwordUpdated } = require("../mail/templates/passwordUpdate")
+const Profile = require("../models/Profile")
+require("dotenv").config()
 
 //send OTP
 exports.sendOTP = async(req, res) =>{
@@ -102,12 +105,12 @@ exports.signup = async(req, res) =>{
         const recentOTP = await OTP.find({email}).sort({createdAt:-1}).limit(1);
         console.log(recentOTP);
         //Validate otp
-        if(recentOTP.length == 0){
+        if(recentOTP.length === 0){
             return res.status(400).json({
                 success:false,
                 message:"OTP Not found",
             })
-        } else if(otp !== recentOTP){
+        } else if(otp != recentOTP[0].otp){
             return res.status(400).json({
                 success:false,
                 message:"Invalid OTP",
@@ -116,7 +119,11 @@ exports.signup = async(req, res) =>{
 
         // OTP Matched
         // Hash Password
-        const hashedpassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Create the user
+        let approved = ""
+        approved === "Instructor" ? (approved = false) : (approved = true)
         // Create Entry in Database
         const profileDetails = await Profile.create({
             gender:null,
@@ -125,19 +132,21 @@ exports.signup = async(req, res) =>{
             contactNumber:null,
         });
 
-        const User = await User.create({
+        const user = await User.create({
             firstName,
             lastName,
             email,
             contactNumber,
-            password,
-            accountType,
+            password : hashedPassword,
+            accountType : accountType,
+            approved: approved,
             additionalDetails:profileDetails._id,
             image:`https://api.dicebear.com/9.x/initials/svg?seed=${firstName}%20${lastName}`
         })
 
         return res.status(200).json({
             success:true,
+            user,
             message:"User is Registered Successfully"
         });
 
@@ -162,7 +171,7 @@ exports.login = async(req, res) =>{
         }
 
         //Check user exist or not
-        const user = await User.findOne({email}).populate("additionlDetails");
+        const user = await User.findOne({email}).populate("additionalDetails");
         if(!user){
             return res.status(401).json({
                 success:false,
@@ -178,7 +187,7 @@ exports.login = async(req, res) =>{
                 accountType:user.accountType,
             }
             const token = jwt.sign(payload, process.env.JWT_SECRET, {
-                expiresIn: "2h",
+                expiresIn: "24h",
             });
             user.token = token; /// DOUBT
             user.password = undefined;
