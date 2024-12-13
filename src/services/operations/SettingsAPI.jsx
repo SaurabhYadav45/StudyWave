@@ -21,9 +21,10 @@ export function updateDisplayPicture(token, formData){
         try {
             const response = await apiConnector("PUT", UPDATE_DISPLAY_PICTURE_API, formData,
             {
-                "Content-Type" : "multipart/form-data",
+                // "Content-Type" : "multipart/form-data",
                 Authorization : `Bearer ${token}`,
             })
+            console.log("Below display picture api call")
 
             console.log(
                 "UPDATE_DISPLAY_PICTURE_API API RESPONSE............",
@@ -60,6 +61,7 @@ export function updateProfile(token, formData) {
         if (!response.data.success) {
           throw new Error(response.data.message)
         }
+        console.log("Just above userImage")
         const userImage = response.data.updatedUserDetails.image
           ? response.data.updatedUserDetails.image
           : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.updatedUserDetails.firstName} ${response.data.updatedUserDetails.lastName}`
@@ -78,11 +80,14 @@ export function updateProfile(token, formData) {
 
   // Change Password
 export async function changePassword(token, formData){
+  
   const toastId = toast.loading("Loading...")
+  console.log("Just at the fxn call")
   try {
     const response = await apiConnector("POST", CHANGE_PASSWORD_API, formData, {
       Authorization:`Bearer ${token}`
     })
+    console.log("Just below the fxn call")
 
     console.log("CHANGE_PASSWORD_API API RESPONSE............", response)
     if(!response.data.success){
@@ -92,7 +97,7 @@ export async function changePassword(token, formData){
     toast.success("Password Changed Successfully")
   } catch (error) {
     console.log("CHANGE_PASSWORD_API API ERROR............", error)
-    toast.error(error.response.data.message)
+    toast.error("Couldn't Change Password")
   }
   toast.dismiss(toastId);
 }

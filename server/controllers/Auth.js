@@ -222,63 +222,67 @@ exports.login = async(req, res) =>{
 
 // Change password
 
-exports.changePassword = async(req, res) =>{
+exports.changePassword = async (req, res) => {
     try {
-        // get data from req body
-        const {oldPassword, newPassword, confirmNewPassword} = req.body;
-        // Do validatiopn
-        if(!oldPassword || !newPassword || !confirmNewPassword){
-            return res.status(400).json({
-                success: false,
-                message:"All fields are required"
-            })
-        }
-
-        if(newPassword !== confirmNewPassword){
-            return res.status(400).json({
-                success: false,
-                message:"New passwords do not match"
-            })
-        }
-
-        //Find the user in the database
-        const userFound = await User.findById(req.user.id);
-        if(!userFound){
-            return res.status(404).json({
-                message:"User not found"
-            })
-        }
-
-        // Verify the old Password
-        const isMatch = await bcrypt.compare(userFound.password, oldPassword)
-        if(!isMatch){
-            return res.status(400).json({
-                success: false,
-                message:"Old password is Incorrect"
-            })
-        }
-
-        //Hash the new password 
-        const hashPassword = await bcrypt.hash(newPassword, 10);
-        //Update password in DB
-        userFound.password = newPassword;
-        await userFound.save();
-        //send Email - password updated
-        await mailSender(
-            userFound.email,
-            "Password Updated Successfully",
-            "Your password has been successfully updated",
-        );
-        // return response
-        res.status(200).json({
-            success: true,
-            message: "Password updated successfully",
-        });
+      // Get user data from req.user
+      const userDetails = await User.findById(req.user.id)
+  
+      // Get old password, new password, and confirm new password from req.body
+      const { oldPassword, newPassword } = req.body
+  
+      // Validate old password
+      const isPasswordMatch = await bcrypt.compare(
+        oldPassword,
+        userDetails.password
+      )
+      if (!isPasswordMatch) {
+        // If old password does not match, return a 401 (Unauthorized) error
+        return res
+          .status(401)
+          .json({ success: false, message: "The password is incorrect" })
+      }
+  
+      // Update password
+      const encryptedPassword = await bcrypt.hash(newPassword, 10)
+      const updatedUserDetails = await User.findByIdAndUpdate(
+        req.user.id,
+        { password: encryptedPassword },
+        { new: true }
+      )
+  
+      // Send notification email
+      try {
+        const emailResponse = await mailSender(
+          updatedUserDetails.email,
+          "Password for your account has been updated",
+          passwordUpdated(
+            updatedUserDetails.email,
+            `Password updated successfully for ${updatedUserDetails.firstName} ${updatedUserDetails.lastName}`
+          )
+        )
+        console.log("Email sent successfully:", emailResponse.response)
+      } catch (error) {
+        // If there's an error sending the email, log the error and return a 500 (Internal Server Error) error
+        console.error("Error occurred while sending email:", error)
+        return res.status(500).json({
+          success: false,
+          message: "Error occurred while sending email",
+          error: error.message,
+        })
+      }
+  
+      // Return success response
+      return res
+        .status(200)
+        .json({ success: true, message: "Password updated successfully" })
     } catch (error) {
-        console.error("Error in changePassword:", error);
-        res.status(500).json({
-            success: false,
-            message: "Internal Server Error",
-        });
+      // If there's an error updating the password, log the error and return a 500 (Internal Server Error) error
+      console.error("Error occurred while updating password:", error)
+      return res.status(500).json({
+        success: false,
+        message: "Error occurred while updating password",
+        error: error.message,
+      })
     }
-}
+  }
+  

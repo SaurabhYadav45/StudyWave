@@ -12,9 +12,16 @@ const {uploadImageToCloudinary} = require("../utils/imageUploader")
 exports.updateProfile = async(req, res) =>{
     try {
         // Get data
-        const {dateOfBirth ="", about="", contactNumber, gender} = req.body;
-        //get userId
-        const id = req.user.id;
+        const {
+            firstName = "",
+            lastName = "",
+            dateOfBirth = "",
+            about = "",
+            contactNumber = "",
+            gender = "",
+          } = req.body
+          const id = req.user.id
+
         //Validation
         if(!contactNumber || !gender || !id){
             return res.status(400).json({
@@ -22,10 +29,15 @@ exports.updateProfile = async(req, res) =>{
                 message:"ALl fields are required",
             });
         }
-        // find profile
-        const userDetails = await User.findById(id);
-        const profileId = userDetails.additionalDetails;
-        const profileDetails = await Profile.findById(profileId);
+        // Find the profile by id
+        const userDetails = await User.findById(id)
+        const profileDetails = await Profile.findById(userDetails.additionalDetails)
+
+        const user = await User.findByIdAndUpdate(id, {
+        firstName,
+        lastName,
+        })
+        await user.save()
 
         // Update profile
         profileDetails.dateOfBirth = dateOfBirth;
@@ -33,11 +45,16 @@ exports.updateProfile = async(req, res) =>{
         profileDetails.gender = gender;
         profileDetails.contactNumber = contactNumber;
         await profileDetails.save();
+
+        // Find the updated user details
+        const updatedUserDetails = await User.findById(id)
+        .populate("additionalDetails")
+        .exec()
         //return response
         return res.status(200).json({
             success:true,
             message:"Profile updated successfully",
-            profileDetails,
+            updatedUserDetails,
         });
     } catch (error) {
         return res.status(500).json({

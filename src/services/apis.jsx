@@ -16,6 +16,18 @@ export const profileEndpoints = {
     GET_INSTRUCTOR_DATA_API: BASE_URL + "/profile/instructorDashboard",
   }
 
+// STUDENT ENDPOINTS
+export const studentEndpoints = {
+  COURSE_PAYMENT_API : BASE_URL + "payment/capturePayment",
+  COURSE_VERIFY_API : BASE_URL + "payment/verifyPayment",
+  SEND_PAYMENT_SUCCESS_EMAIL_API : BASE_URL + "/payment/sendPaymentSuccessEmail"
+}
+
+// CATALOG PAGE DATA
+export const catalogData = {
+  CATALOGPAGEDATA_API: BASE_URL + "/course/getCategoryPageDetails",
+}
+
 //ContactUs Endpoints
 export const contactusEndpoint = {
     CONTACT_US_API: BASE_URL + "/reach/contact",
@@ -25,6 +37,6 @@ export const contactusEndpoint = {
 export const settingsEndpoints = {
     UPDATE_DISPLAY_PICTURE_API : BASE_URL + "/profile/updateDisplayPicture",
     UPDATE_PROFILE_API : BASE_URL + "/profile/updateProfile",
-    CHANGE_PASSWORD_API : BASE_URL + "/profile/changepassword",
-    DELETE_PASSWORD_API: BASE_URL + "/profile/deleteProfile",
+    CHANGE_PASSWORD_API : BASE_URL + "/auth/changepassword",
+    DELETE_PROFILE_API: BASE_URL + "/profile/deleteProfile",
 }

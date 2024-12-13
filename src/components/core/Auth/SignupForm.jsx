@@ -161,6 +161,7 @@ const SignupForm = () => {
             placeholder='Enter Password'
             className="form-style w-full bg-richblack-700 px-2 p-[12px] text-richblack-5 rounded-[0.5rem] "
             value-style="box-shadow: rgba(255, 255, 255, 0.18) 0px -1px 0px inset;"
+            autocomplete="new-password"
             />
 
             <span onClick={() => setShowPassword((prev) => !prev)} className="absolute right-3 top-[38px] z-[10] cursor-pointer">
@@ -182,6 +183,7 @@ const SignupForm = () => {
             value={confirmPassword}
             onChange={onChangeHandler}
             placeholder='Confirm Password'
+            autocomplete="current-password"
             className="form-style w-full bg-richblack-700 px-2 p-[12px] text-richblack-5 rounded-[0.5rem] box-shadow: rgba(255, 255, 255, 0.18) 0px -1px 0px inset "
             // value-style="box-shadow: rgba(255, 255, 255, 0.18) 0px -1px 0px inset;"
             />

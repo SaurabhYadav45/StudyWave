@@ -27,8 +27,10 @@ const UpdatePassword = () => {
     // console.log("password Data - ", data)
     try {
       await changePassword(token, data)
+      
     } catch (error) {
-      console.log("ERROR MESSAGE - ", error.message)
+      console.log("Getting here")
+      
     }
   }
 

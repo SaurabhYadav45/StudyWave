@@ -28,17 +28,17 @@ const ChangeProfilePicture = () => {
         }
     }
 
-    const previewFile = (file) =>{
+    const previewFile = (file) => {
         const reader = new FileReader()
         reader.readAsDataURL(file)
-        reader.onloadend(()=> {
-            setPreviewSource(reader.result)
-        })
+        reader.onloadend = () => {
+          setPreviewSource(reader.result)
+        }
     }
 
     const handleFileUpload = () =>{
         try {
-            console.log("Loading...")
+            console.log("Loading....")
             setLoading(true)
             const formData = new FormData()
             formData.append("displayPicture", imageFile)
@@ -47,6 +47,7 @@ const ChangeProfilePicture = () => {
                 setLoading(false)
               })
         } catch (error) {
+            setLoading(false)
             console.log("ERROR MESSAGE : ", error.message)
         }
     }
@@ -69,7 +70,7 @@ const ChangeProfilePicture = () => {
                     <input 
                     type= "file"
                     ref = {fileInputRef}
-                    onchange={handleFileChange}
+                    onChange={handleFileChange}
                     accept='image/png, image/gif, image/jpeg, image/jpg'
                     className='hidden'
                     />

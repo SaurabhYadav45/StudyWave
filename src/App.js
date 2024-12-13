@@ -25,6 +25,9 @@ import Settings from "./components/core/Dashboard/Settings";
 import EnrolledCourses from "./components/core/Dashboard/EnrolledCourses";
 import Error from "./pages/Error";
 import PrivateRoute from "./components/core/Auth/PrivateRoute";
+import Cart from "./components/core/Dashboard/Cart"
+
+import MyCourses from "./components/core/Dashboard/MyCourses"
 
 
 function App() {
@@ -96,6 +99,19 @@ function App() {
         >
           <Route path="dashboard/my-profile" element={<MyProfile />} />
           <Route path="dashboard/Settings" element={<Settings />} />
+
+          {user?.accountType === ACCOUNT_TYPE.STUDENT && (
+            <>
+            <Route path="/dashboard/enrolled-courses" element={<EnrolledCourses/>}/>
+            <Route path="/dashboard/cart" element={<Cart />} />
+            </>
+          )}
+
+          {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
+            <>
+              <Route path = "/dashboard/my-courses" element={<MyCourses/>}/>
+            </>
+          )}
         </Route>
 
         <Route path="*" element={<Error />} />
