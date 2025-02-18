@@ -5,6 +5,6 @@ export const ACCOUNT_TYPE = {
 }
 
 export const COURSE_STATUS = {
-    DRAFT : "draft",
-    PUBLISHED : "published",
+    DRAFT : "Draft",
+    PUBLISHED : "Published",
 }

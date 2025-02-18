@@ -28,7 +28,7 @@ const MyCourses = () => {
     <div>
         <div className='flex justify-between mb-14 items-center'>
             <h1 className='text-3xl font-medium text-richblack-5'>My Courses</h1>
-            <IconBtn text="Add Course" onClick = {() => navigate("dashboard/add-course")}>
+            <IconBtn text="Add Course" onclick={()=>navigate("/dashboard/add-course")}>
                 <VscAdd/>
             </IconBtn>
         </div>

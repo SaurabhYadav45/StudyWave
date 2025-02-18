@@ -14,14 +14,13 @@ import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css"
 
 import ConfirmationModal from '../../common/ConfirmationModal'
 import { setLoading } from '../../../../slices/authSlice'
-import { fetchInstructorCourses } from '../../../../services/operations/courseDetailAPI'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-// import {
-//     deleteCourse,
-//     fetchInstructorCourses
-//   } from "../../../../services/operations/courseDetailAPI"
+import {
+    deleteCourse,
+    fetchInstructorCourses
+  } from "../../../../services/operations/courseDetailAPI"
 
 
 const CoursesTable = ({courses, setCourses}) => {
@@ -36,7 +35,7 @@ const CoursesTable = ({courses, setCourses}) => {
 
     const handleCourseDelete = async(courseId)=>{
         setLoading(true)
-        // await deleteCourse({courseId : courseId}, token)
+        await deleteCourse({courseId : courseId}, token)
         const result = await fetchInstructorCourses(token)
     
         if(result){
@@ -48,16 +47,16 @@ const CoursesTable = ({courses, setCourses}) => {
 
   return (
     <>
-    <Table className="rounded-xl border border-richblack-800">
+    <Table className="rounded-xl border border-richblack-800 text-richblack-100">
         <Thead>
-            <Tr className="flex gap-x-10 rounded-t-md border-b border-b-richblack-800 px-6 py-2">
-                <Th className="text-left text-sm font-medium uppercase text-richblack-100">Courses</Th>
+            <Tr className=" border-richblack-800 p-8 flex gap-x-10 rounded-t-md border-b border-b-richblack-800 px-6 py-2">
+                <Th className="w-[30%]">Courses</Th>
 
-                <Th className="text-left text-sm font-medium uppercase text-richblack-100">Duration</Th>
+                <Th className='ml-96'>Duration</Th>
 
-                <Th className="text-left text-sm font-medium uppercase text-richblack-100">Price</Th>
+                <Th >Price</Th>
 
-                <Th className="text-left text-sm font-medium uppercase text-richblack-100">Actions</Th>
+                <Th >Actions</Th>
             </Tr>
         </Thead>
         <Tbody>
@@ -89,12 +88,12 @@ const CoursesTable = ({courses, setCourses}) => {
                                             Drafted
                                         </p>
                                     ) : (
-                                        <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-yellow-100">
+                                        <div className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-yellow-100">
                                             <div className="flex h-3 w-3 items-center justify-center rounded-full bg-yellow-100 text-richblack-700">
                                                 <FaCheck/>
                                             </div>
                                             Published
-                                        </p>
+                                        </div>
                                     )}
                                 </div>
                             </Td>
@@ -106,7 +105,9 @@ const CoursesTable = ({courses, setCourses}) => {
                                 {/* edit course */}
                                 <button 
                                 disabled={loading}
-                                onClick={navigate(`/dashboard/edit-course/${course._id}`)}
+                                onClick={() => {
+                                    navigate(`/dashboard/edit-course/${course._id}`)
+                                  }}
                                 title='Edit'
                                 className="px-2 transition-all duration-200 hover:scale-110 hover:text-caribbeangreen-300">
                                     <FiEdit2 size={20} />
@@ -118,13 +119,8 @@ const CoursesTable = ({courses, setCourses}) => {
                                     text2:"All the data related to this course will be deleted",
                                     btn1Text: !loading ? "Delete" : "Loading...",
                                     btn2Text: "Cancel",
-                                    btn1Handler: !loading ? 
-                                    () =>{handleCourseDelete(course._id)}: 
-                                    () => {},
-
-                                    btn2Handler: !loading ? 
-                                    () => setConfirmationModal(null):
-                                    () => {}
+                                    btn1Handler:!loading? (()=>handleCourseDelete(course._id)):(()=>{}),
+                                    btn2Handler:!loading?(()=>setConfirmationModal(null)):(()=>{}),
                                 })}}
                                 title="Delete"
                                 className="px-1 transition-all duration-200 hover:scale-110 hover:text-[#ff0000]"

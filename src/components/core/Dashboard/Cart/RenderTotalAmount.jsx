@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
-// import { BuyCourse } from "../../../../services/operations/studentFeaturesAPI"
+import { BuyCourse } from "../../../../services/operations/studentFeaturesAPI"
 import IconBtn from "../../common/IconBtn"
 
 export default function RenderTotalAmount() {
@@ -11,10 +11,10 @@ export default function RenderTotalAmount() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-//   const handleBuyCourse = () => {
-//     const courses = cart.map((course) => course._id)
-//     BuyCourse(token, courses, user, navigate, dispatch)
-//   }
+  const handleBuyCourse = () => {
+    const courses = cart.map((course) => course._id)
+    BuyCourse(token, courses, user, navigate, dispatch)
+  }
 
   return (
     <div className="min-w-[280px] rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-6">
@@ -22,7 +22,7 @@ export default function RenderTotalAmount() {
       <p className="mb-6 text-3xl font-medium text-yellow-100">₹ {total}</p>
       <IconBtn
         text="Buy Now"
-        // onclick={handleBuyCourse}
+        onclick={handleBuyCourse}
         customClasses="w-full justify-center"
       />
     </div>

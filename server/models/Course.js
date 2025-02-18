@@ -22,7 +22,7 @@ const courseSchema = new mongoose.Schema({
         {
             type:mongoose.Schema.Types.ObjectId,
             ref:"Section",
-        }
+        },
     ],
     ratingAndReviews:{
         type:mongoose.Schema.Types.ObjectId,
@@ -46,7 +46,7 @@ const courseSchema = new mongoose.Schema({
         {
             type:mongoose.Schema.Types.ObjectId,
             ref:"User",
-        }
+        },
     ],
     instructions:{
         type:[String],

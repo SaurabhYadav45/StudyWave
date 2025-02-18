@@ -9,12 +9,20 @@ exports.createRating = async(req, res)=>{
         const userId = req.user.id;
         // fetch data from req body
         const {rating, review, courseId} = req.body;
+        console.log("userId...", userId)
+        console.log("courseId...", courseId)
         // check if user is enrolled or not
-        const courseDetails = await Course.findOne(
-                                    {_id: userId,
-                                    studentsEnrolled:{$elemMatch:{$eq: userId}},
-                                    }
-                                );
+        // const courseDetails = await Course.findOne({
+        //                             _id: courseId,
+        //                             studentsEnrolled:{$elemMatch:{$eq: userId}},
+        //                             });
+
+        const courseDetails = await Course.findOne({
+            _id: courseId,
+            studentsEnrolled: userId, // ✅ No need for $elemMatch
+        });
+
+        console.log("courseDetail....", courseDetails)
         if(!courseDetails){
             return res.status(400).json({
                 success: false,
@@ -24,16 +32,19 @@ exports.createRating = async(req, res)=>{
         // Check if user already reviewed the course
         const alreadyReviewed = await RatingAndReview.findOne({
             user:userId,
-            courseId,
+            course:courseId,
         });
         
+    if(alreadyReviewed){
         return res.status(403).json({
             success: false,
             message:"Course is already reviewed by the user"
         })
+    }
         // create rating and review
         const ratingReview = await RatingAndReview.create({
-            rating, review,
+            rating, 
+            review,
             course:courseId,
             user:userId,
         });
@@ -47,10 +58,10 @@ exports.createRating = async(req, res)=>{
             },
             {new:true},
         )
-        console.log(updatedCourseDetails);
+        console.log("Update Course Details", updatedCourseDetails);
         // return response
         return res.status(200).json({
-            success: false,
+            success: true,
             message:"Rating and Review created successfully",
             ratingReview,
         })

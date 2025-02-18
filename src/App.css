@@ -59,7 +59,9 @@ details > summary::-webkit-details-marker {
     spinner-oaa3wk 1.6s infinite linear;
 }
 
-
+  .yellowButton {
+    @apply cursor-pointer rounded-md bg-yellow-50 px-[20px] py-[8px] font-semibold text-richblack-900;
+  }
 
   .blackButton {
     @apply cursor-pointer rounded-md bg-richblack-800 px-[20px] py-[8px] font-semibold text-richblack-5;
@@ -73,3 +75,30 @@ details > summary::-webkit-details-marker {
   .section_heading {
     @apply text-2xl font-bold text-richblack-5 lg:text-4xl;
   }
+
+
+
+  /* .custom-pagination .swiper-pagination-bullet {
+    background-color: #9a9393;
+  }
+  
+  .custom-pagination .swiper-pagination-bullet-active {
+    background-color: #ccc;
+  } */
+
+  /* Default bullet style */
+.swiper-pagination-bullet {
+  background-color: #cccc !important;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  opacity: 1;
+  border-radius: 50%;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Active bullet style */
+.swiper-pagination-bullet-active {
+  background-color: #ccc !important;
+  transform: scale(1.2);
+}

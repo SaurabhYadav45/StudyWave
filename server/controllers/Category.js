@@ -1,5 +1,10 @@
 const Category = require("../models/Category");
 
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max)
+}
+
 exports.createCategory = async(req, res) =>{
     try {
         // fetch data
@@ -40,7 +45,8 @@ exports.showAllCategories = async(req, res) =>{
         const allCategories = await Category.find({}, {name:true, description:true});
         res.status(200).json({
             success:true,
-            message:"All Categories returned successfully"
+            message:"All Categories returned successfully",
+            data: allCategories,
         })
     } catch (error) {
         return res.status(500).json({
@@ -57,21 +63,78 @@ exports.categoryPageDetails  = async(req, res)=>{
         const {categoryId} = req.body;
         // Get course for specified category
         const selectedCategory  = await Category.findById(categoryId)
-                                          .populate("courses")
-                                          .exec();
-        // Validation
+        .populate({
+            path: "courses", // Populate courses
+            populate: [
+              {
+                path: "instructor", // Populate instructor from User model
+                select: "firstName lastName", // Specify fields to retrieve
+              },
+              {
+                path: "ratingAndReviews", // Populate ratingAndReviews
+                select: "rating review", 
+              },
+            ],
+          });
+        //   .exec();
+
+        console.log("SELECTED CATEGORY :", selectedCategory)
+        // Handle the case when the category is not found
         if(!selectedCategory){
             return res.status(404).json({
                 success: false,
-                message:"Data Not Found"
+                message:"Category not found"
             })
         }
+
+        // Handle the case when there are no courses
+        if (selectedCategory.courses.length === 0) {
+            console.log("No courses found for the selected category.")
+            return res.status(404).json({
+            success: false,
+            message: "No courses found for the selected category.",
+            })
+        }
+
+
         // get courses for different categories
-        const differentCategories = await Category.find({
-                                          _id:{$ne:categoryId},
-                                          })
-                                          .populate("courses")
-                                          .exec();
+        // const differentCategories = await Category.find({
+        //                                   _id:{$ne:categoryId},
+        //                                   })
+        //                                   .populate("courses")
+        //                                   .exec();
+
+        const categoriesExceptSelected = await Category.find({
+            _id: { $ne: categoryId },
+          })
+
+           // If no categories are found, handle the edge case
+            if (categoriesExceptSelected.length === 0) {
+                return res.status(404).json({ message: "No other categories found" });
+            }
+
+          // Select a random category
+            const randomCategoryId =
+            categoriesExceptSelected[getRandomInt(categoriesExceptSelected.length)]._id;
+
+            // Fetch the random category and populate its published courses
+            const differentCategory = await Category.findById(randomCategoryId).populate({
+                path: "courses", // Populate courses
+                match: { status: "Published" }, // Only include published courses
+                populate: [
+                  {
+                    path: "instructor", // Populate instructor from User model
+                    select: "firstName lastName", // Specify fields to retrieve
+                  },
+                  {
+                    path: "ratingAndReviews", // Populate ratingAndReviews
+                    select: "rating review", // Specify fields to retrieve
+                  },
+                ],
+              });
+
+
+
         // Get top selling courses 
         // H.W
 
@@ -80,7 +143,7 @@ exports.categoryPageDetails  = async(req, res)=>{
             success:true,
             data:{
                 selectedCategory,
-                differentCategories,
+                differentCategory,
             }
         });
     } catch (error) {
