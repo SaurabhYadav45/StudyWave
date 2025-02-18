@@ -31,7 +31,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
 	cors({
-		origin: "*",
+		origin: "https://studywave-frontend.onrender.com",
 		credentials: true,
 	})
 );
