@@ -102,3 +102,7 @@ details > summary::-webkit-details-marker {
   background-color: #ccc !important;
   transform: scale(1.2);
 }
+
+.zIndex{
+  z-index: 10;
+}

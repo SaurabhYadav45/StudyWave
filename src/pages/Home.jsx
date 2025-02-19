@@ -19,7 +19,7 @@ const Home = () => {
     <div className='overflow-x-hidden'>
          
         {/* SECTION - 1 */}
-        <div className='relative mx-auto flex flex-col w-11/12 items-center text-white justify-between'>
+        <div className='relative  mx-auto flex flex-col max-w-maxContent w-11/12 items-center text-white justify-between'>
         
           <Link to={"/signup"}>
             <div className='group mx-auto rounded full bg-richblack-800 font-bold text-richblack-200 transition-all duration-200 hover:scale-95 w-fit mt-16 p-1'>
@@ -63,7 +63,7 @@ const Home = () => {
           </div>
 
           {/* Code Section 1  */}
-          <div>
+          <div className='flex flex-col items-center justify-center mx-auto'>
             <CodeBlocks
             position={"lg:flex-row"}
             heading={
@@ -147,13 +147,13 @@ const Home = () => {
 
           <div className='mx-auto flex w-11/12 max-w-maxContent flex-col items-center     justify-between gap-8'>
               <div className='flex flex-row gap-5 mx-auto w-11/12 max-w-maxContent mb-10 mt-[95px]'>
-                <div className='text-4xl ml-10 font-semibold w-[45%]'>
+                <div className='text-4xl  font-semibold w-[45%]'>
                   Get the Skills you need for a
                   <HighlightText text={"Job that is in demand"}/>
                 </div>
                 <div className='flex flex-col gap-10 w-[40%] items-start'>
                   <div className='text-[16px]'>
-                    The modern StudyNotion is the dictates its own terms. Today, to
+                    The modern StudyWave is the dictates its own terms. Today, to
                     be a competitive specialist requires more than professional
                     skills.
                   </div>

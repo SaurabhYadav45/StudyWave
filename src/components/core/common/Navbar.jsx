@@ -13,6 +13,7 @@ import { apiConnector } from '../../../services/apiConnector'
 import { ACCOUNT_TYPE } from '../../../utils/constants'
 import ProfileDropdown from '../Auth/ProfileDropdown'
 import { fetchCourseCategories } from '../../../services/operations/courseDetailAPI'
+import SidebarMenu from "./SidebarMenu"
 
 
 
@@ -115,7 +116,7 @@ const Navbar = () => {
             </nav>
 
             {/* Login/Signup/dashboard*/}
-            <div className='flex items-center gap-x-4'>
+            <div className='hidden md:block lg:flex items-center gap-x-4'>
                 {
                     user && user.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
                         <Link to ="/dashboard/cart" className='relative'>
@@ -152,8 +153,10 @@ const Navbar = () => {
             </div>
 
             <button className="mr-4 md:hidden">
-            <AiOutlineMenu fontSize={24} fill="#AFB2BF" />
+            {/* <AiOutlineMenu fontSize={24} fill="#AFB2BF" /> */}
+            <SidebarMenu/>
             </button>
+            
         </div>
     </div>
   )
@@ -165,7 +168,3 @@ export default Navbar
 
 
 
-// ?.filter(
-//     (subLink) => subLink?.courses?.length > 0
-//   )
-//   ?

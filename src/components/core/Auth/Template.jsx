@@ -22,7 +22,7 @@ const Template = ({title, description1, description2, image, formType}) => {
         </div>
 
         {/* section-2 : Image */}
-        <div className='relative mx-auto w-11/12 max-w-[450px] md:mx-0 mt-6'>
+        <div className='relative  mx-auto w-11/12 max-w-[450px] md:mx-0 mt-6'>
             <img src={frameImg} alt="" width={558} height={504} loading='lazy' />
 
             <img src={image} alt="Students"  width={558} height={504} loading='lazy' className="absolute -top-4 right-4 z-10"/>

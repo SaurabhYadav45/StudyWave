@@ -25,7 +25,7 @@ const Footer = () => {
   return (
     <div className='bg-richblack-800 mx-auto'>
       {/* Bottom PART-1 */}
-      <div className='flex lg: border-b-richblack-500 ml-20 lg:flex-row gap-8 justify-center mx-auto py-16 w-11/12'>
+      <div className='flex lg: border-b-richblack-500 lg:flex-row gap-8 justify-center mx-auto py-16 w-11/12'>
 
         {/* Sectio-1 */}
         <div className='lg:w-[50%] mt-0 flex flex-wrap flex-row justify-between lg:border-r lg:border-richblack-700 pl-3 lg:pr-5 gap-3'>
