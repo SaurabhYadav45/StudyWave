@@ -12,7 +12,7 @@ const Stats = [
 const StatsComponent = () => {
   return (
     <div className='bg-richblack-700'>
-        <div className='flex w-11/12 justify-around text-white mx-auto px-10 py-10'>
+        <div className='flex flex-wrap lg:w-11/12 justify-around text-white mx-auto px-10 py-10'>
             {
                 Stats.map((data, index) => {
                     return(

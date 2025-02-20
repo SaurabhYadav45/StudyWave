@@ -103,6 +103,3 @@ details > summary::-webkit-details-marker {
   transform: scale(1.2);
 }
 
-.zIndex{
-  z-index: 10;
-}

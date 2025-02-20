@@ -45,8 +45,8 @@ const AboutUs = () => {
         <section>
             <div className='flex flex-col w-11/12 items-center justify-between mx-auto max-w-maxContent'>
                 {/* Part-1 */}
-                <div className='flex gap-10 justify-between items-center'>
-                    <div className='flex flex-col gap-10 my-24 lg:w-[50%] '>
+                <div className='flex flex-col sm:flex-row gap-10 justify-between items-center'>
+                    <div className='flex flex-col gap-10 my-24 lg:w-[50%]'>
                         <h1 className='bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#FCB045] bg-clip-text text-4xl font-semibold text-transparent lg:w-[70%]'>Our Founding Story</h1>
 
                         <p className='text-base font-medium text-richblack-300 lg:w-[95%]'>Our e-learning platform was born out of a shared vision and passion for transforming education. It all began with a group of educators, technologists, and lifelong learners who recognized the need for accessible, flexible, and high-quality learning opportunities in a rapidly evolving digital world.</p>
@@ -58,8 +58,8 @@ const AboutUs = () => {
                     </div>
                 </div>
                 {/* part-2 */}
-                <div className='flex justify-between items-center gap-10'>
-                    <div className='flex flex-col gap-10 my-24 w-[40%]'>
+                <div className='flex flex-col md:flex-row justify-between items-center gap-10'>
+                    <div className='flex flex-col gap-10 my-24 lg:w-[40%]'>
                         <h1 className="bg-gradient-to-b from-[#FF512F] to-[#F09819] bg-clip-text text-4xl font-semibold text-transparent lg:w-[70%] ">Our Vision</h1>
                         <p className="text-base font-medium text-richblack-300 lg:w-[95%]">With this vision in mind, we set out on a journey to create an
                         e-learning platform that would revolutionize the way people

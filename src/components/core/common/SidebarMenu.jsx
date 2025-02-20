@@ -74,13 +74,13 @@ export default function SidebarMenu() {
           <hr className="h-[1px] w-full" />
           
           <Link to={"/about"}>
-            <h2 className="text-lg font-bold text-yellow-25">About</h2>
-            <p className="text-sm text-gray-300">Learn more about us.</p>
+            <h2 onClick={() => setIsOpen(false)} className="text-lg font-bold text-yellow-25">About</h2>
+            <p onClick={() => setIsOpen(false)} className="text-sm text-gray-300">Learn more about us.</p>
           </Link>
 
           <Link to={"/contact"}>
-            <h2 className="text-lg font-bold text-yellow-25">Contact Us</h2>
-            <p className="text-sm text-gray-300">Reach out for more info.</p>
+            <h2 onClick={() => setIsOpen(false)} className="text-lg font-bold text-yellow-25">Contact Us</h2>
+            <p onClick={() => setIsOpen(false)} className="text-sm text-gray-300">Reach out for more info.</p>
           </Link>
         </div>
       </div>

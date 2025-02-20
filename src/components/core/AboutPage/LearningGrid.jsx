@@ -47,12 +47,12 @@ const LearningGridArray = [
 
 const LearningGrid = () => {
   return (
-    <div className='grid grid-cols-1 xl:grid-cols-4 mx-auto mb-12 '>
+    <div className='grid sm:grid-cols-2 grid-cols-1  xl:grid-cols-4 mx-auto mb-12 '>
         {
             LearningGridArray.map((card, idx) =>{
                 return(
                     <div key = {idx} 
-                    className={`${idx === 0 && "col-span-2"} 
+                    className={`${idx === 0 && "lg:col-span-2"} 
                     ${card.order % 2 === 1 ? "bg-richblack-700 h-[294px]" : card.order%   2=== 0 ? "bg-richblack-800" : "bg-transparent"} 
                     ${card.order === 3 && "lg:col-start-2"}`}>
                         {card.order < 0 ? (
