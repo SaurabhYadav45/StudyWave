@@ -35,7 +35,7 @@ const VideoDetailsSidebar = ({setReviewModal}) => {
   }, [courseEntireData, courseSectionData, location.pathname])
 
   return (
-    <div className='flex flex-col w-[320px] max-w-[350px] h-[calc(100vh-3.5rem)] border-r-[1px] border-r-richblack-700 bg-richblack-800'>
+    <div className='hidden sm:flex flex-col w-[320px] max-w-[350px] h-[calc(100vh-3.5rem)] border-r-[1px] border-r-richblack-700 bg-richblack-800'>
       <div className='mx-5 justify-between flex flex-col gap-2 gap-y-4 font-bold text-richblack-25 py-5 text-lg border-b border-richblack-600'>
         {/* Back icon & Review Modal */}
         <div className='flex justify-between items-center w-full'>

@@ -1,13 +1,25 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
-// import { Button } from "@/components/ui/button";
-import IconBtn from "./IconBtn";
+// import IconBtn from "./IconBtn";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/Logo/StudyWave Org.png"
+import { useSelector } from "react-redux";
+
+import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai"
+import { BsChevronDown } from 'react-icons/bs'
+import { ACCOUNT_TYPE } from '../../../utils/constants'
+import ProfileDropdown from '../Auth/ProfileDropdown'
+import useOnClickOutside from "../../../hooks/useOnClickOutside";
 
 export default function SidebarMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate()
+  const{user} = useSelector((state) => state.profile)
+  const{token} = useSelector((state) => state.auth)
+  const{totalItems} = useSelector((state) => state.cart)
+
+  const sideBarRef = useRef(null)
+  useOnClickOutside(sideBarRef, () => setIsOpen(false));
 
   return (
     <div className="z-[9999] fixed">
@@ -22,30 +34,57 @@ export default function SidebarMenu() {
       </nav>
       
       {/* Sidebar */}
-      <div
+      <div ref = {sideBarRef}
         className={`bg-richblack-800 fixed top-0 right-0 h-full w-48 bg-gray-800 text-white transform ${
           isOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 ease-in-out shadow-lg p-5`}
       >
-        <button
+        <Link
           onClick={() => setIsOpen(false)}
           className="absolute top-4 right-4 text-white"
         >
           <X size={28} />
-        </button>
+        </Link>
         <div className="mt-12 space-y-6 flex flex-col items-center">
-          <IconBtn text="Login"
-          onclick={() =>{
-            setIsOpen(false)
-            navigate("/login")
-          }}
-          />
-          <IconBtn text="Signup"
-          onclick={() => {
-            setIsOpen(false)
-            navigate("/signup")
-          }} 
-          />
+
+        <div className='flex items-center gap-x-4'>
+                {
+                    user && user.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
+                        <Link to ="/dashboard/cart" className='relative'>
+                            <AiOutlineShoppingCart className='text-2xl text-richblack-100'/>
+                            { totalItems > 0 && (
+                                <span className='absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-richblack-600 text-center text-xs font-bold text-yellow-100'>
+                                    {totalItems}
+                                </span>
+                            )}
+                        </Link>
+                    )
+                }
+
+                {/* Login */}
+                {
+                    token === null &&(
+                        <Link to="/login">
+                            <button className='border bg-yellow-25 rounded-[8px] px-[12px] py-[8px] text-richblack-900 font-semibold'>Login</button>
+                        </Link>
+                    )
+                }
+                
+
+                {/* Signup */}
+                {
+                    token === null &&(
+                        <Link to="/signup" 
+                        className='border border-richblack-700 bg-yellow-25 rounded-[8px] px-[12px] py-[8px] text-richblack-900 font-semibold'>
+                        Signup
+                        </Link>
+                    )
+                }
+
+                {/* Profile */}
+                {token !== null && <ProfileDropdown/>}
+            </div>
+
           <hr className="h-[1px] w-full" />
           <div>
             <h2 className="text-lg font-bold text-yellow-25">Courses</h2>
@@ -58,7 +97,7 @@ export default function SidebarMenu() {
                 <li className="hover:text-yellow-25 cursor-pointer">Devops</li>
               </Link>
 
-              <Link to={"/catalog/web-development"}>
+              <Link to={"/catalog/web-devlopment"}>
                 <li className="hover:text-yellow-25 cursor-pointer">Web Development</li>
               </Link>
 

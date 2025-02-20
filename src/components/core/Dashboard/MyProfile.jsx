@@ -16,14 +16,14 @@ const MyProfile = () => {
       <h1 className='mb-14 text-3xl font-medium text-richblack-5'>My Profile</h1>
 
       {/* User Name, Prfile Picture, Email */}
-      <div className='flex items-center justify-between rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12'>
-        <div className='flex items-center gap-x-4'>
+      <div className='flex items-center flex-col sm:flex-row sm:justify-between rounded-md border-[1px] border-richblack-700 bg-richblack-800 sm:p-8'>
+        <div className='flex  items-center gap-x-4'>
           <img src={user?.image} alt={`profile-${user?.firstName}`}
-          className='aspect-square w-[78px] object-cover rounded-full'/>
+          className='aspect-square w-[50px] lg:w-[78px] object-cover rounded-full'/>
 
           <div className='space-y-1'>
             <p className='text-lg font-semibold text-richblack-5'>{user?.firstName + " " + user?.lastName}</p>
-            <p className='text-sm text-richblack-300'>{user?.email}</p>
+            <p className='text-sm text-richblack-300 text-wrap'>{user?.email}</p>
           </div>
         </div>
 
@@ -34,7 +34,7 @@ const MyProfile = () => {
       </div>
 
       {/* About */}
-      <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+      <div className="my-10 flex flex-col gap-y-10 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8">
         <div className="flex w-full items-center justify-between">
           <p className="text-lg font-semibold text-richblack-5">About</p>
           <IconBtn
@@ -58,9 +58,9 @@ const MyProfile = () => {
       </div>
       
       {/* Personal Details */}
-      <div className='my-10 flex flex-col rounded-md border-[1px] border-richblack-700 bg-richblack-800 gap-y-10 p-8 px-12'>
+      <div className='my-10 flex flex-col rounded-md border-[1px] border-richblack-700 bg-richblack-800 gap-y-10 p-8'>
         {/* heading and Button */}
-        <div className='flex justify-between w-full'>
+        <div className='flex   lg:justify-between w-full'>
           <p className='text-lg font-semibold text-richblack-5'>Personal Details</p>
           <IconBtn text={"Edit"} onclick={()=> {navigate("/dashboard/settings")}}>
             <RiEditBoxLine/>
@@ -68,7 +68,7 @@ const MyProfile = () => {
         </div>
 
         {/* Additional Detail */}
-        <div className='flex max-w-[500px] justify-between'>
+        <div className='flex flex-col sm:flex-row max-w-[500px] justify-between'>
           {/* part-1 */}
           <div className='flex flex-col gap-y-5'>
             <div>

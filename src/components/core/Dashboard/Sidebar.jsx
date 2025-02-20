@@ -27,7 +27,7 @@ const Sidebar = () => {
 
     return(
         <>
-        <div className="flex flex-col min-h-[calc(100vh-3.5rem)] min-w-[220px] border-r-1 border-r-richblack-700 bg-richblack-800 py-10">
+        <div className="hidden sm:flex flex-col min-h-[calc(100vh-3.5rem)] min-w-[220px] border-r-1 border-r-richblack-700 bg-richblack-800 py-10">
             {/* Sidebar Link :My profile, Enrolled courses, cart  */}
             <div className="flex flex-col  ">
                 {

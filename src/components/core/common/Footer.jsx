@@ -113,7 +113,7 @@ const Footer = () => {
         </div>
         
         {/* Section-2 */}
-        <div className="lg:w-[50%] flex flex-wrap flex-row justify-between pl-3 lg:pl-5 lg:border-r lg:border-b-richblack-500 lg:border-richblack-700 gap-3">
+        <div className="hidden lg:w-[50%] sm:flex flex-wrap flex-row justify-between pl-3 lg:pl-5 lg:border-r lg:border-b-richblack-500 lg:border-richblack-700 gap-3">
             {FooterLink2.map((ele, i) => {
               return (
                 <div key={i} className="w-[48%] lg:w-[30%] mb-7 lg:pl-0">

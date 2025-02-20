@@ -198,7 +198,7 @@ const CourseDetails = () => {
             <div className="flex flex-col gap-3">
               <p className="text-[28px] font-semibold">Course Content</p>
               <div className="flex flex-wrap justify-between gap-2">
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <span>
                     {courseContent.length} {`section(s)`}
                   </span>

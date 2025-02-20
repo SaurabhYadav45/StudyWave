@@ -29,12 +29,30 @@ database.connect();
 // Middlewares
 app.use(express.json());
 app.use(cookieParser());
-app.use(
+
+const allowedOrigins = [
+	"http://localhost:3000",
+	"https://studywave-frontend.onrender.com",
+  ];
+  
+  app.use(
 	cors({
-		origin: "*",
-		credentials: true,
+	  origin: function (origin, callback) {
+		if (!origin || allowedOrigins.includes(origin)) {
+		  callback(null, true);
+		} else {
+		  callback(new Error("Not allowed by CORS"));
+		}
+	  },
+	  credentials: true,
 	})
-);
+  );
+// app.use(
+// 	cors({
+// 		origin: "*",
+// 		credentials: true,
+// 	})
+// );
 app.use(
 	fileUpload({
 		useTempFiles: true,
