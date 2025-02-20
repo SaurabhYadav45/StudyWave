@@ -50,23 +50,23 @@ export default function SidebarMenu() {
           <div>
             <h2 className="text-lg font-bold text-yellow-25">Courses</h2>
             <ul className="mt-2 space-y-2">
-              <Link to={"/catalog/Python"}>
+              <Link to={"/catalog/python"}>
                 <li className="hover:text-yellow-25 cursor-pointer ">Python</li>
               </Link>
 
-              <Link to={"/catalog/Devops"}>
+              <Link to={"/catalog/devops"}>
                 <li className="hover:text-yellow-25 cursor-pointer">Devops</li>
               </Link>
 
-              <Link to={"/catalog/Web Development"}>
+              <Link to={"/catalog/web-development"}>
                 <li className="hover:text-yellow-25 cursor-pointer">Web Development</li>
               </Link>
 
-              <Link to={"/catalog/Blockchain"}>
+              <Link to={"/catalog/blockchain"}>
                 <li className="hover:text-yellow-25 cursor-pointer">Blockchain</li>
               </Link>
 
-              <Link to={"/catalog/Generative AI"}>
+              <Link to={"/catalog/generative-ai"}>
                 <li className="hover:text-yellow-25 cursor-pointer">Generative AI</li>
               </Link>
             </ul>
