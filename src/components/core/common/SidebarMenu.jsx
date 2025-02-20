@@ -85,32 +85,45 @@ export default function SidebarMenu() {
                 {token !== null && <ProfileDropdown/>}
             </div>
 
-          <hr className="h-[1px] w-full" />
+          <hr className="h-[2px] w-full" />
           <div>
+            {user && (
+              <div>
+                <div className="text-lg font-bold text-yellow-5 cursor-pointer mb-6"
+                onClick={() => {
+                  setIsOpen(false)
+                  navigate("/dashboard/enrolled-courses")
+                }}>
+                  Enrolled Courses
+                </div>
+                <hr className="h-[2px] w-full" />
+              </div>
+            )}
+
             <h2 className="text-lg font-bold text-yellow-25">Courses</h2>
             <ul className="mt-2 space-y-2">
               <Link to={"/catalog/python"}>
-                <li className="hover:text-yellow-25 cursor-pointer ">Python</li>
+                <li className="hover:text-yellow-25 cursor-pointer my-2">Python</li>
               </Link>
 
               <Link to={"/catalog/devops"}>
-                <li className="hover:text-yellow-25 cursor-pointer">Devops</li>
+                <li className="hover:text-yellow-25 cursor-pointer my-2">Devops</li>
               </Link>
 
               <Link to={"/catalog/web-devlopment"}>
-                <li className="hover:text-yellow-25 cursor-pointer">Web Development</li>
+                <li className="hover:text-yellow-25 cursor-pointer my-2">Web Development</li>
               </Link>
 
               <Link to={"/catalog/blockchain"}>
-                <li className="hover:text-yellow-25 cursor-pointer">Blockchain</li>
+                <li className="hover:text-yellow-25 cursor-pointer my-2">Blockchain</li>
               </Link>
 
               <Link to={"/catalog/generative-ai"}>
-                <li className="hover:text-yellow-25 cursor-pointer">Generative AI</li>
+                <li className="hover:text-yellow-25 cursor-pointer my-2">Generative AI</li>
               </Link>
             </ul>
           </div>
-          <hr className="h-[1px] w-full" />
+          <hr className="h-[2px] w-full" />
           
           <Link to={"/about"}>
             <h2 onClick={() => setIsOpen(false)} className="text-lg font-bold text-yellow-25">About</h2>
