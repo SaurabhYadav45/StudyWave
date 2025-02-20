@@ -1,6 +1,7 @@
 StudyWave An EdTech Platform
 
-Currently It is in buildining state
+Here is the live link of this platform :
+https://studywave-frontend.onrender.com/
 
 Welcome to StudyWave!
 StudyWave is an innovative EdTech platform designed to revolutionize the way students learn and educators teach. By combining interactive tools, advanced technology, and a user-friendly interface, StudyWave empowers learners and teachers to achieve their educational goals efficiently and effectively.
