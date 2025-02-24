@@ -75,7 +75,7 @@ exports.contactUsEmail = (
     <body>
         <div class="container">
             <a href=""><img class="logo"
-                    src="https://res.cloudinary.com/dic5pygft/image/upload/v1733389139/StudyWave_YellowBg_ukvhog.png" alt="StudyWave"></a>
+                    src="https://res.cloudinary.com/dic5pygft/image/upload/v1740393016/StudyWave_YellowBg_gro9tj.png" alt="StudyWave"></a>
             <div class="message">Contact Form Confirmation</div>
             <div class="body">
                 <p>Dear ${firstname} ${lastname},</p>
