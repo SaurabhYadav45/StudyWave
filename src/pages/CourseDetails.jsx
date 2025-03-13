@@ -15,7 +15,7 @@ import {BuyCourse} from "../services/operations/studentFeaturesAPI"
 import Error from "./Error"
 import Footer from "../components/core/common/Footer"
 
-// import GetAvgRating from "../utils/avgRating"
+import GetAvgRating from "../utils/avgRating"
 import CourseAccordionBar from "../components/core/course/CourseAccordionBar"
 
 const CourseDetails = () => {
@@ -33,6 +33,7 @@ const CourseDetails = () => {
     const {courseId} = useParams()
 
     const[confirmationModal, setConfirmationModal] = useState(false)
+    const[avgReviewCount, setAvgReviewCount] = useState(0)
 
     useEffect(() =>{
         (async() =>{
@@ -47,7 +48,11 @@ const CourseDetails = () => {
         })()
     }, [courseId])
 
-    const[avgReviewCount, setAvgReviewCount] = useState()
+
+    useEffect(() =>{
+      const count = GetAvgRating(courseData?.data?.courseDetails?.ratingAndReviews)
+      setAvgReviewCount(count)
+    }, [courseData])
 
     const [isActive, setIsActive] = useState(Array(0))
     const handleActive = (id) => {
@@ -90,7 +95,8 @@ const CourseDetails = () => {
         courseContent,
         instructor,
         studentsEnrolled,
-        createdAt
+        createdAt,
+        ratingAndReviews,
     } = courseData?.data?.courseDetails || {}
 
     const handleBuyCourse = () =>{
@@ -145,7 +151,7 @@ const CourseDetails = () => {
               <div className="text-md flex flex-wrap items-center gap-2">
                 <span className="text-yellow-25">{avgReviewCount}</span>
                 <RatingStars Review_Count={avgReviewCount} Star_Size={24} />
-                <span>{`(8 reviews)`}</span>
+                <span>{`(${ratingAndReviews.length} reviews)`}</span>
                 <span className='text-richblack-100'>{`${studentsEnrolled?.length} students enrolled`}</span>
               </div>
               <div>

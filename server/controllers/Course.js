@@ -388,7 +388,7 @@ exports.deleteCourse = async (req, res) => {
       let totalDurationInSeconds = 0
       courseDetails.courseContent.forEach((content) => {
         content.subSection.forEach((subSection) => {
-          const timeDurationInSeconds = parseInt(subSection.timeDuration)
+          const timeDurationInSeconds = parseInt(subSection?.timeDuration)
           totalDurationInSeconds += timeDurationInSeconds
         })
       })
