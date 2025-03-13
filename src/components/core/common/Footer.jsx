@@ -23,7 +23,7 @@ const Footer = () => {
     const Plans = ["Paid memberships", "For students", "Business solutions"];
     const Community = ["Forums", "Chapters", "Events"];
   return (
-    <div className='bg-richblack-800 mx-auto'>
+    <div className='bg-richblack-800'>
       {/* Bottom PART-1 */}
       <div className='flex lg: border-b-richblack-500 lg:flex-row gap-8 justify-center mx-auto py-16 w-11/12'>
 

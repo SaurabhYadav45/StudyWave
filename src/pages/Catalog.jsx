@@ -147,7 +147,7 @@ const Catalog = () => {
         </div>
       </div> */}
       {/* Footer */}
-      <Footer></Footer>
+      <Footer/>
     </>
   )
 }

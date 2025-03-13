@@ -11,7 +11,9 @@ const Course_Card = ({course, Height}) => {
 
   const[avgReviewCount, setAvgReviewCount] = useState(0)
 
-  
+  // useEffect(() => {
+
+  // })
 
   return (
     <>
