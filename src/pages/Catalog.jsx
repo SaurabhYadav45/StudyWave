@@ -42,7 +42,7 @@ const Catalog = () => {
                 try {
                     const res = await getCatalogPageData(categoryId)
                     setCatalogPageData(res)
-                    console.log("CatelogPageData response", catalogPageData)
+                    console.log("CatelogPageData response", res)
                 } catch (error) {
                     console.log("Error in fetching CatelogPageData")
                     console.log(error)
@@ -64,7 +64,7 @@ const Catalog = () => {
     }
 
   return (
-    <div>
+    <>
     {/* Hero section */}
       <div className='flex items-center justify-center bg-richblack-800'>
         <div className='w-11/12 flex flex-col min-h-[260px] max-w-maxContentTab gap-4 lg:max-w-maxContent justify-center'>
@@ -147,8 +147,8 @@ const Catalog = () => {
         </div>
       </div> */}
       {/* Footer */}
-      <Footer/>
-    </div>
+      <Footer></Footer>
+    </>
   )
 }
 

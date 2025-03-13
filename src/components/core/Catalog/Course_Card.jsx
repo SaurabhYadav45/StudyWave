@@ -9,7 +9,9 @@ import RatingStars from '../common/RatingStars'
 
 const Course_Card = ({course, Height}) => {
 
-  const[avgReviewCount, setAvgReviewCount] = useState(1.2)
+  const[avgReviewCount, setAvgReviewCount] = useState(0)
+
+  
 
   return (
     <>

@@ -62,7 +62,7 @@ const Sidebar = () => {
                         <VscSignOut className="text-lg"/>
                         <span>Logout</span>
                     </div>
-                </button>
+                </button>   
             </div>
         </div>
         {confirmationModal && <ConfirmationModal modalData={confirmationModal}/>}

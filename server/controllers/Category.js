@@ -60,6 +60,7 @@ exports.showAllCategories = async(req, res) =>{
 exports.categoryPageDetails  = async(req, res)=>{
     try {
         // get category id
+        // console.log("Heloooooooooooooooo.....")
         const {categoryId} = req.body;
         // Get course for specified category
         const selectedCategory  = await Category.findById(categoryId)
@@ -72,7 +73,6 @@ exports.categoryPageDetails  = async(req, res)=>{
               },
               {
                 path: "ratingAndReviews", // Populate ratingAndReviews
-                select: "rating review", 
               },
             ],
           });
@@ -137,6 +137,18 @@ exports.categoryPageDetails  = async(req, res)=>{
 
         // Get top selling courses 
         // H.W
+
+        // Get top-selling courses across all categories
+    //     const allCategories = await Category.find()
+    //     .populate({
+    //     path: "courses",
+    //     match: { status: "Published" },
+    //     })
+    //     .exec()
+    //      const allCourses = allCategories.flatMap((category) => category.courses)
+    //      const mostSellingCourses = allCourses
+    //     .sort((a, b) => b.sold - a.sold)
+    //     .slice(0, 10)
 
         // return response
         return res.status(200).json({
