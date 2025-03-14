@@ -226,7 +226,7 @@ const CourseDetails = () => {
                   <span>
                     {totalNoOfLectures} {`lecture(s)`}
                   </span>
-                  <span>{courseData?.data?.totalDuration} total length</span>
+                  <span>{courseData?.data?.totalDration} total length</span>
                 </div>
                 <div>
                   <button
