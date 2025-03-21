@@ -1,13 +1,9 @@
-# StudyWave - Online Learning Platform
+![image](https://github.com/user-attachments/assets/ff7be733-90c4-4a90-83e0-6e9825f6809a)# StudyWave - Online Learning Platform
 
 StudyWave is a full-stack **EdTech platform** that enables instructors to create and sell courses while allowing students to explore, purchase, and learn from various courses. Built with modern web technologies, StudyWave offers a seamless learning experience.                                                                          
 Deployment Link : https://studywave-frontend.onrender.com/
 
 ![Screenshot 2025-03-21 234440](https://github.com/user-attachments/assets/efaf83ae-deec-40c6-b11e-5f87ee25d63d)
-
-![Screenshot 2025-03-21 234842](https://github.com/user-attachments/assets/11732bba-0007-4b12-8561-76aad5cf1c12)
-
-![Screenshot 2025-03-21 234626](https://github.com/user-attachments/assets/72b56dc2-f18d-48f1-8a3c-bff82e3a7d5e)
 
 ## 🚀 Features
 - **Instructor Dashboard**: Create, manage, and sell courses.
@@ -46,39 +42,20 @@ git clone https://github.com/your-username/StudyWave.git
 cd StudyWave
 ```
 
-### Install Dependencies
-#### Frontend:
-```sh
-cd client  # Navigate to frontend folder
-npm install
-npm start
-```
-
-#### Backend:
-```sh
-cd server  # Navigate to backend folder
-npm install
-npm start
-```
-
-### Environment Variables
-Create a `.env` file in the backend directory and add:
-```env
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-STRIPE_SECRET_KEY=your_stripe_api_key (if using payments)
-```
-
 ## 📌 Usage
 1. **Instructor**: Register/Login -> Create a course -> Publish and sell courses.
 2. **Student**: Register/Login -> Browse courses -> Purchase -> Learn at their own pace.
 
 ## 📷 Screenshots
-(Add relevant screenshots of your platform here)
+![Screenshot 2025-03-21 234842](https://github.com/user-attachments/assets/11732bba-0007-4b12-8561-76aad5cf1c12)
+
+![Screenshot 2025-03-21 234626](https://github.com/user-attachments/assets/72b56dc2-f18d-48f1-8a3c-bff82e3a7d5e)
+
+![Screenshot 2025-03-21 234523](https://github.com/user-attachments/assets/17842887-cdf6-4025-92a5-fda9737b4db9)
 
 ## 🚀 Deployment
 StudyWave is deployed on **Render** and accessible at:
-[Live Demo](your-live-url)
+https://studywave-frontend.onrender.com/
 
 ## 🤝 Contributing
 Feel free to fork this repo and submit PRs to enhance StudyWave.
