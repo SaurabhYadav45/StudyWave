@@ -1,7 +1,13 @@
 # StudyWave - Online Learning Platform
 
-StudyWave is a full-stack **EdTech platform** that enables instructors to create and sell courses while allowing students to explore, purchase, and learn from various courses. Built with modern web technologies, StudyWave offers a seamless learning experience.
+StudyWave is a full-stack **EdTech platform** that enables instructors to create and sell courses while allowing students to explore, purchase, and learn from various courses. Built with modern web technologies, StudyWave offers a seamless learning experience.                                                                          
 Deployment Link : https://studywave-frontend.onrender.com/
+
+![Screenshot 2025-03-21 234440](https://github.com/user-attachments/assets/efaf83ae-deec-40c6-b11e-5f87ee25d63d)
+
+![Screenshot 2025-03-21 234842](https://github.com/user-attachments/assets/11732bba-0007-4b12-8561-76aad5cf1c12)
+
+![Screenshot 2025-03-21 234626](https://github.com/user-attachments/assets/72b56dc2-f18d-48f1-8a3c-bff82e3a7d5e)
 
 ## 🚀 Features
 - **Instructor Dashboard**: Create, manage, and sell courses.
