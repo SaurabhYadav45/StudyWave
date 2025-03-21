@@ -71,9 +71,9 @@ const EnrolledCourses = () => {
 
               {/* Course Progress */}
               <div className='flex flex-col gap-2 px-2 py-3 w-1/5 text-richblack-25'>
-                <p>Progress : {course.progressPercentage || 50}%</p>
+                <p>Progress : {course.progressPercentage || 0}%</p>
                 <ProgressBar
-                completed = {course.progressPercentage || 50}
+                completed = {course.progressPercentage || 0}
                 isLabelVisible = {false}
                 height = "8px"
                 />
