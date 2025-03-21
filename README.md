@@ -51,8 +51,6 @@ cd StudyWave
 
 ![Screenshot 2025-03-21 234626](https://github.com/user-attachments/assets/72b56dc2-f18d-48f1-8a3c-bff82e3a7d5e)
 
-![Screenshot 2025-03-21 234523](https://github.com/user-attachments/assets/17842887-cdf6-4025-92a5-fda9737b4db9)
-
 ## 🚀 Deployment
 StudyWave is deployed on **Render** and accessible at:
 https://studywave-frontend.onrender.com/
