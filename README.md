@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/ff7be733-90c4-4a90-83e0-6e9825f6809a)# StudyWave - Online Learning Platform
+# StudyWave - Online Learning Platform
 
 StudyWave is a full-stack **EdTech platform** that enables instructors to create and sell courses while allowing students to explore, purchase, and learn from various courses. Built with modern web technologies, StudyWave offers a seamless learning experience.                                                                          
 Deployment Link : https://studywave-frontend.onrender.com/
