@@ -24,12 +24,12 @@ export function updateDisplayPicture(token, formData){
                 // "Content-Type" : "multipart/form-data",
                 Authorization : `Bearer ${token}`,
             })
-            console.log("Below display picture api call")
+            // console.log("Below display picture api call")
 
-            console.log(
-                "UPDATE_DISPLAY_PICTURE_API API RESPONSE............",
-                response
-              )
+            // console.log(
+            //     "UPDATE_DISPLAY_PICTURE_API API RESPONSE............",
+            //     response
+            //   )
 
               if(!response.data.success){
                 throw new Error(response.data.message)

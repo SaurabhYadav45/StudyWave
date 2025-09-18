@@ -41,7 +41,7 @@ const CourseDetails = () => {
                 const res = await fetchCourseDetails(courseId)
                 // console.log("courseDetails response........ :", res)
                 setCourseData(res)
-                console.log("courseDetails response :", courseData)
+                // console.log("courseDetails response :", courseData)
             } catch (error) {
                 console.log("Could not Fetch Course DEtails")
             }

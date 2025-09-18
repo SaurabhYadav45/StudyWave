@@ -135,7 +135,7 @@ const ContactUsForm = () => {
 
           {/* Message */}
           <div className="flex flex-col gap-2">
-              <label htmlFor="messagr" className='lable-style'>Message</label>
+              <label htmlFor="message" className='lable-style'>Message</label>
               <textArea
               name="message"
               id="message"

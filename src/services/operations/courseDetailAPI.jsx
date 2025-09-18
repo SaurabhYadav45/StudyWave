@@ -34,7 +34,7 @@ export const addCourseDetails = async(data, token)=>{
             Authorization : `Bearer ${token}`
         })
 
-        console.log("CREATE COURSE API RESPONSE..............", response)
+        // console.log("CREATE COURSE API RESPONSE..............", response)
         if(!response?.data?.success){
             throw new Error(response?.data?.message)
         }
@@ -58,7 +58,7 @@ export const editCourseDetails = async(data, token)=>{
             Authorization : `Bearer ${token}`
         } )
 
-        console.log("EDIT COURSE API RESPONSE...........", response)
+        // console.log("EDIT COURSE API RESPONSE...........", response)
         if(!response.data.success){
             throw new Error(response.data.message)
         }
@@ -81,7 +81,7 @@ export const deleteCourse = async(data, token) =>{
             Authorization : `Bearer ${token}`
         })
 
-        console.log("DELETE COURSE API RESPONSE.......", response)
+        // console.log("DELETE COURSE API RESPONSE.......", response)
         if(!response.data.success){
             throw new Error(response.data.message)
         }
@@ -105,7 +105,7 @@ export const createSection = async(data, token) =>{
             Authorization : `Bearer ${token}`,
         })
 
-        console.log("CREATE COURSE API RESPONSE........", response)
+        // console.log("CREATE COURSE API RESPONSE........", response)
         if (!response?.data?.success) {
             throw new Error(response.data.message)
         }
@@ -130,7 +130,7 @@ export const updateSection = async(data, token) =>{
             Authorization : `Bearer ${token}`,
         })
 
-        console.log("UPDATE COURSE API RESPONSE........", response)
+        // console.log("UPDATE COURSE API RESPONSE........", response)
         if (!response?.data?.success) {
             throw new Error("Could Not Update Section")
         }
@@ -154,9 +154,9 @@ export const createSubSection = async(data, token)=>{
         const response = await apiConnector("POST", CREATE_SUBSECTION_API, data, {
             Authorization : `Bearer ${token}`,
         })
-        console.log("Response subsection", response)
+        // console.log("Response subsection", response)
 
-        console.log("CREATE SUBSECTION API RESPONSE.......", response)
+        // console.log("CREATE SUBSECTION API RESPONSE.......", response)
 
         if(!response.data.success){
             throw new Error(response.data.message)
@@ -181,7 +181,7 @@ export const updateSubSection = async (data, token) => {
       const response = await apiConnector("POST", UPDATE_SUBSECTION_API, data, {
         Authorization: `Bearer ${token}`,
       })
-      console.log("UPDATE SUB-SECTION API RESPONSE............", response)
+      // console.log("UPDATE SUB-SECTION API RESPONSE............", response)
       if (!response?.data?.success) {
         throw new Error("Could Not Update Lecture")
       }
@@ -205,7 +205,7 @@ export const deleteSection = async(data, token) =>{
             Authorization : `Bearer ${token}`
         })
 
-        console.log("DELETE SECTION API RESPONSE.........", response)
+        // console.log("DELETE SECTION API RESPONSE.........", response)
 
         if(!response.data.success){
             throw new Error(response.data.message)
@@ -230,7 +230,7 @@ export const deleteSubSection = async (data, token) => {
       const response = await apiConnector("POST", DELETE_SUBSECTION_API, data, {
         Authorization: `Bearer ${token}`,
       })
-      console.log("DELETE SUB-SECTION API RESPONSE............", response)
+      // console.log("DELETE SUB-SECTION API RESPONSE............", response)
       if (!response?.data?.success) {
         throw new Error(response.data.message)
       }
@@ -255,7 +255,7 @@ export const fetchInstructorCourses = async(token) =>{
             Authorization : `Bearer ${token}`
         })
 
-        console.log("FETCH INSTRUCTOR COURSE API RESPONSE......", response)
+        // console.log("FETCH INSTRUCTOR COURSE API RESPONSE......", response)
 
         if(!response.data.success){
             throw new Error(response.data.message)
@@ -275,7 +275,7 @@ export const fetchCourseCategories = async() =>{
     let result = []
     try {
         const response = await apiConnector("GET", COURSE_CATEGORIES_API)
-        console.log("COURSE_CATEGORIES_API API RESPONSE............", response)
+        // console.log("COURSE_CATEGORIES_API API RESPONSE............", response)
         if (!response?.data?.success) {
         throw new Error("Could Not Fetch Course Categories")
         }
@@ -296,7 +296,7 @@ export const fetchCourseDetails = async (courseId) => {
       const response = await apiConnector("POST", COURSE_DETAILS_API, {
         courseId,
       })
-      console.log("COURSE_DETAILS_API API RESPONSE............", response)
+      // console.log("COURSE_DETAILS_API API RESPONSE............", response)
   
       if (!response.data.success) {
         throw new Error(response.data.message)
@@ -324,13 +324,13 @@ export const getFullDetailsOfCourse = async (courseId, token) => {
             Authorization: `Bearer ${token}`
           },{courseId:courseId});
 
-        console.log("COURSE_FULL_DETAILS_API API RESPONSE............", response)
+        // console.log("COURSE_FULL_DETAILS_API API RESPONSE............", response)
   
       if (!response?.data?.success) {
         throw new Error(response?.data?.message)
       }
       result = response?.data?.data
-      console.log("Result :....", result)
+      // console.log("Result :....", result)
     } catch (error) {
       console.log("COURSE_FULL_DETAILS_API API ERROR............", error)
       result = error?.response?.data
@@ -349,7 +349,7 @@ export const createRating = async (data, token) => {
       const response = await apiConnector("POST", CREATE_RATING_API, data, {
         Authorization: `Bearer ${token}`,
       })
-      console.log("CREATE RATING API RESPONSE............", response)
+      // console.log("CREATE RATING API RESPONSE............", response)
       if (!response?.data?.success) {
         throw new Error("Could Not Create Rating")
       }
@@ -374,10 +374,10 @@ export const markLectureAsComplete = async (data, token) => {
       const response = await apiConnector("POST", LECTURE_COMPLETION_API, data, {
         Authorization: `Bearer ${token}`,
       })
-      console.log(
-        "MARK_LECTURE_AS_COMPLETE_API API RESPONSE............",
-        response
-      )
+      // console.log(
+      //   "MARK_LECTURE_AS_COMPLETE_API API RESPONSE............",
+      //   response
+      // )
   
       if (!response.data.message) {
         throw new Error(response.data.error)

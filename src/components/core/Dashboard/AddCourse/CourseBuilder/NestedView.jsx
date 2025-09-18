@@ -45,7 +45,7 @@ const NestedView = ({handleChangeEditSectionName}) => {
         // console.log("subSectionId---> :", subSectionId)
         // console.log("SectionId---> :", sectionId)
         const result = await deleteSubSection({subSectionId, sectionId, token})
-        console.log("handleDeletesubSection result :", result)
+        // console.log("handleDeletesubSection result :", result)
         if(result){
             const updatedCourseContent = course.courseContent.map((section) => section._id === sectionId ? result : section)
             const updatedCourse = {...course, courseContent:updatedCourseContent}

@@ -19,10 +19,10 @@ const ExploreMore = () => {
       const[currentCard, setCurrentCard] = useState(HomePageExplore[0].courses[0].heading)
 
       const setMyCards=(value)=>{
-        console.log("Value of SetMyCards :",value)
+        // console.log("Value of SetMyCards :",value)
         setCurrentTab(value)
         const result = HomePageExplore.filter((course) => course.tag === value)
-        console.log("Result : ", result)
+        // console.log("Result : ", result)
         setCourses(result[0].courses)
         setCurrentCard(result[0].courses[0].heading)
       }

@@ -28,7 +28,7 @@ const Catalog = () => {
                 const res = await apiConnector("GET", categories.CATEGORIES_API)
                 // console.log(res)
                 const category_id = res?.data?.data?.filter((ct) => ct.name.split(" ").join("-").toLowerCase() === catalogName)[0]._id
-                console.log("CategoryId :", category_id)
+                // console.log("CategoryId :", category_id)
                 setCategoryId(category_id)
             } catch (error) {
                 console.log("Could Not Fetch Categories")
@@ -42,7 +42,7 @@ const Catalog = () => {
                 try {
                     const res = await getCatalogPageData(categoryId)
                     setCatalogPageData(res)
-                    console.log("CatelogPageData response", res)
+                    // console.log("CatelogPageData response", res)
                 } catch (error) {
                     console.log("Error in fetching CatelogPageData")
                     console.log(error)

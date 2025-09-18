@@ -26,8 +26,8 @@ export function sendOtp(email, navigate){
         email,
         checkUserPresent:true,
       })
-      console.log("SEND OTP RESPONSE : ", response);
-      console.log(response.data.success);
+      // console.log("SEND OTP RESPONSE : ", response);
+      // console.log(response.data.success);
 
       if(!response.data.success){
         throw new Error(response.data.message);
@@ -71,8 +71,8 @@ export function signup(
           otp,
         })
 
-        console.log("SIGNUP RESPONSE: ", response);
-        console.log(response.data.success)
+        // console.log("SIGNUP RESPONSE: ", response);
+        // console.log(response.data.success)
 
         if(!response.data.success){
           throw new Error(response.data.message)
@@ -103,7 +103,7 @@ export function login(email, password, navigate){
         email,
         password
       });
-      console.log("Login API Response........... :", response);
+      // console.log("Login API Response........... :", response);
 
       if(!response.data.success){
         throw new Error(response.data.message);
@@ -172,7 +172,7 @@ export function resetPassword(password, confirmPassword, token , navigate){
         token,
       })
 
-      console.log("Reset Password Response..........", response)
+      // console.log("Reset Password Response..........", response)
 
       if(!response.data.success){
         throw new Error(response.data.message)

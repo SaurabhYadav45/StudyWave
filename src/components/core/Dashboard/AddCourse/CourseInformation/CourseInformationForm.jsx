@@ -135,7 +135,7 @@ const CourseInformationForm = () => {
             return 
         }
 
-        console.log("OnSubmit New")
+        // console.log("OnSubmit New")
         const formData = new FormData()
         formData.append("courseName", data.courseTitle)
         formData.append("courseDescription", data.courseShortDesc)
